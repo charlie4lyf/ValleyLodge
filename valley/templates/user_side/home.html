@@ -1,0 +1,187 @@
+{% extends 'user_side/base.html' %}
+{% load static %}
+{% block title %}Welcome to Valley Lodge{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Background Slideshow -->
+<div id="hero-section" class="hero"
+     data-images="{% static 'images/lodge1.jpg' %},{% static 'images/lodge2.jpg' %},{% static 'images/lodge3.jpg' %}">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Welcome to Valley Lodge</h1>
+        <p class="lead">Experience luxury, comfort, and breathtaking views.</p>
+        <a href="{% url 'room_list' %}" class="btn btn-light btn-lg">Book Now</a>
+    </div>
+</div>
+
+<!-- Rooms Section -->
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div id="room-slider" class="room-image">
+                <img src="{% static 'images/room1.jpg' %}" alt="Room Image" id="room-img">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary">Our Luxurious Rooms</h2>
+            <p>Stay in one of our premium rooms with stunning views, comfortable bedding, and top-tier amenities.</p>
+            <a href="{% url 'room_list' %}" class="btn btn-primary">View More</a>
+        </div>
+    </div>
+</div>
+
+<!-- Activities Section -->
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div id="activity-slider" class="activity-image">
+                <img src="{% static 'images/activity1.jpg' %}" alt="Activity Image" id="activity-img">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary">Exciting Events</h2>
+            <p>Explore a variety of Events that will make your stay unforgettable, from hiking trails to evening bonfires.</p>
+            <a href="{% url 'event_list' %}" class="btn btn-primary">View More</a>
+        </div>
+    </div>
+</div>
+
+<!-- Food Section -->
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div id="food-slider" class="food-image">
+                <img src="{% static 'images/food1.jpg' %}" alt="Food Image" id="food-img">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary">Delicious Food</h2>
+            <p>Indulge in a variety of delectable dishes, made with fresh ingredients, and bursting with flavor.</p>
+            <a href="{% url 'food_list' %}" class="btn btn-primary">View More</a>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Slideshow -->
+<script>
+    // Hero Background Slideshow
+    const heroSection = document.getElementById("hero-section");
+    const bgImages = heroSection.getAttribute("data-images").split(",");
+    let currentBgIndex = 0;
+
+    function changeHeroBg() {
+        heroSection.style.backgroundImage = `url('${bgImages[currentBgIndex]}')`;
+        currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+    }
+    setInterval(changeHeroBg, 5000);
+    changeHeroBg();
+
+    // Room Image Slideshow
+    const roomImg = document.getElementById("room-img");
+    const roomImages = [
+        "{% static 'images/room1.jpg' %}",
+        "{% static 'images/room2.jpg' %}",
+        "{% static 'images/room3.jpg' %}"
+    ];
+    let currentRoomIndex = 0;
+
+    function changeRoomImage() {
+        roomImg.src = roomImages[currentRoomIndex];
+        currentRoomIndex = (currentRoomIndex + 1) % roomImages.length;
+    }
+    setInterval(changeRoomImage, 5000);
+
+        // Activity Image Slideshow
+        const activityImg = document.getElementById("activity-img");
+    const activityImages = [
+        "{% static 'images/activity1.jpg' %}",
+        "{% static 'images/activity2.jpg' %}",
+        "{% static 'images/activity3.jpg' %}"
+    ];
+    let currentActivityIndex = 0;
+
+    function changeActivityImage() {
+        activityImg.src = activityImages[currentActivityIndex];
+        currentActivityIndex = (currentActivityIndex + 1) % activityImages.length;
+    }
+    setInterval(changeActivityImage, 5000);
+
+    // Food Image Slideshow
+const foodImg = document.getElementById("food-img");
+const foodImages = [
+    "{% static 'images/food1.jpg' %}",
+    "{% static 'images/food2.jpg' %}",
+    "{% static 'images/food3.jpg' %}"
+];
+let currentFoodIndex = 0;
+
+function changeFoodImage() {
+    foodImg.src = foodImages[currentFoodIndex];
+    currentFoodIndex = (currentFoodIndex + 1) % foodImages.length;
+}
+setInterval(changeFoodImage, 5000);
+
+
+</script>
+
+<!-- Custom Styles -->
+<style>
+   /* Hero Section */
+.hero {
+    position: relative;
+    height: 90vh;  /* Maintain the hero section height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition: background 1s ease-in-out;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Room Section */
+.room-image img {
+    width: 90%;
+    height: 300px;  /* Reduced height for room images */
+    object-fit: cover;  /* Ensures the image covers the area without distortion */
+    border-radius: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Activity Section */
+.activity-image img {
+    width: 90%;
+    height: 300px;  /* Reduced height for activity images */
+    object-fit: cover;  /* Ensures the image covers the area without distortion */
+    border-radius: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Food Section */
+.food-image img {
+    width: 90%;
+    height: 300px;  /* Reduced height for food images */
+    object-fit: cover;  /* Ensures the image covers the area without distortion */
+    border-radius: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+
+
+</style>
+{% endblock %}

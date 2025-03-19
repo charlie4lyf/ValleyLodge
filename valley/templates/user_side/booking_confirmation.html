@@ -1,0 +1,57 @@
+{% extends 'user_side/base.html' %}
+{% load static %}
+
+{% block title %}Booking Confirmation - Valley Lodge{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="card-title">Booking Confirmation</h3>
+                </div>
+                <div class="card-body">
+                    <h4 class="mb-4">Thank you for booking with Valley Lodge!</h4>
+                    <p>Your booking has been confirmed. Below are the details:</p>
+
+                    <div class="booking-details">
+                        <p><strong>Room:</strong> {{ booking.room.room_name }}</p>
+                        <p><strong>Room Type:</strong> {{ booking.room.room_type }}</p>
+                        <p><strong>Check-In Date:</strong> {{ booking.check_in_date }}</p>
+                        <p><strong>Check-Out Date:</strong> {{ booking.check_out_date }}</p>
+                        <p><strong>Total Price:</strong> ${{ booking.total_price }}</p>
+                        <p><strong>Booking Status:</strong> 
+                            {% if booking.is_approved %}
+                                <span class="badge badge-success">Approved</span>
+                            {% else %}
+                                <span class="badge badge-warning">Pending Approval</span>
+                            {% endif %}
+                        </p>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="{% url 'room_list' %}" class="btn btn-primary">Back to Rooms</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .booking-details {
+        background-color: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 5px;
+    }
+
+    .badge-success {
+        background-color: #28a745;
+    }
+
+    .badge-warning {
+        background-color: #ffc107;
+    }
+</style>
+{% endblock %}

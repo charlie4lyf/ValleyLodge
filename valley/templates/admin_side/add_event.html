@@ -1,0 +1,60 @@
+{% extends 'admin_side/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <h2 class="mb-4">Add Event</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Event Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required placeholder="Enter event name">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="date" class="form-label">Event Date</label>
+                        <input type="date" name="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="price" class="form-label">Price (USD)</label>
+                        <input type="number" name="price" id="price" class="form-control" step="0.01" required placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="capacity" class="form-label">Maximum Capacity</label>
+                    <input type="number" name="capacity" id="capacity" class="form-control" required placeholder="Enter max attendees">
+                </div>
+
+                <!-- Image Upload Fields -->
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="image1" class="form-label">Image 1</label>
+                        <input type="file" name="image1" id="image1" class="form-control">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="image2" class="form-label">Image 2</label>
+                        <input type="file" name="image2" id="image2" class="form-control">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="image3" class="form-label">Image 3</label>
+                        <input type="file" name="image3" id="image3" class="form-control">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Event Description</label>
+                    <textarea name="description" id="description" class="form-control" rows="4" placeholder="Provide event details"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Add Event
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

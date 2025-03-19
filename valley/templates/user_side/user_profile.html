@@ -1,0 +1,101 @@
+{% extends 'user_side/base.html' %}
+{% load static %}
+
+{% block title %}User Profile - Valley Lodge{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>User Profile</h2>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Personal Information</h5>
+                    <p><strong>Username:</strong> {{ customer.user.username }}</p>
+                    <p><strong>Email:</strong> {{ customer.user.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ customer.phone_number }}</p>
+                </div>
+            </div>
+
+            <h3>Your Bookings</h3>
+            {% if bookings %}
+                {% for booking in bookings %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ booking.room.room_name }}</h5>
+                        <p><strong>Check-In Date:</strong> {{ booking.check_in_date }}</p>
+                        <p><strong>Check-Out Date:</strong> {{ booking.check_out_date }}</p>
+                        <p><strong>Total Price:</strong> ${{ booking.total_price }}</p>
+                        <p><strong>Status:</strong> 
+                            {% if booking.is_approved %}
+                                <span class="badge badge-success">Approved</span>
+                            {% else %}
+                                <span class="badge badge-warning">Pending Approval</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>You have no bookings.</p>
+            {% endif %}
+        </div>
+
+        <div class="col-md-4">
+            <h3>Change Password</h3>
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <!-- Manually render the form fields -->
+                        <div class="mb-3">
+                            <input type="password" name="old_password" class="form-control" placeholder="Old Password" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="new_password1" class="form-control" placeholder="New Password" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="new_password2" class="form-control" placeholder="Confirm New Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .badge-success {
+        background-color: #28a745;
+    }
+
+    .badge-warning {
+        background-color: #ffc107;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+{% endblock %}

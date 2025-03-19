@@ -1,0 +1,72 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background-image: url('https://via.placeholder.com/1920x1080');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    animation: changeBackground 10s infinite;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content .btn {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+}
+
+/* Sections */
+.section {
+    padding: 80px 0;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+.section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.section .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+/* Background Image Animation */
+@keyframes changeBackground {
+    0% { background-image: url('https://via.placeholder.com/1920x1080/007bff/ffffff'); }
+    33% { background-image: url('https://via.placeholder.com/1920x1080/0056b3/ffffff'); }
+    66% { background-image: url('https://via.placeholder.com/1920x1080/003366/ffffff'); }
+    100% { background-image: url('https://via.placeholder.com/1920x1080/007bff/ffffff'); }
+}
+
+.hero-section {
+    animation: changeBackground 6s infinite;
+}
