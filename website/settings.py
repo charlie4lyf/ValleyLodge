@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'valley',
     'widget_tweaks',
-    'storages',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
