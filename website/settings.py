@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'valley',
     'widget_tweaks',
-    'cloudinary_storage',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -132,16 +130,7 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = 'login'
-MEDIA_URL = '/media/'
 
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ALLOWED_HOSTS = ['valleylodge.onrender.com']
-
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME', 'dj1qn1yqw'),
-    'API_KEY': os.getenv('CLOUDINARY_API_KEY', '121319877864872'),
-    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET', 'MXwyXLJhndNsejiknkDNvw69vzw'),
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

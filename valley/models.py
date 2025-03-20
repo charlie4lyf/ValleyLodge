@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
-
 # Create your models here.
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -29,9 +27,9 @@ class Room(models.Model):
     room_type = models.CharField(max_length=20, choices=ROOM_TYPES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     is_available = models.BooleanField(default=True)
-    image1 = CloudinaryField('image', folder='room_images/', null=True, blank=True)
-    image2 = CloudinaryField('image', folder='room_images/', null=True, blank=True)
-    image3 = CloudinaryField('image', folder='room_images/', null=True, blank=True)
+    image1 = models.ImageField(upload_to='iamges/room_images/', null=True, blank=True)
+    image2 = models.ImageField(upload_to='images/room_images/', null=True, blank=True)
+    image3 = models.ImageField(upload_to='images/room_images/', null=True, blank=True)
     description = models.TextField()
 
     def __str__(self):
@@ -45,7 +43,6 @@ class Booking(models.Model):
     check_out_date = models.DateField()
     is_approved = models.BooleanField(default=False)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
-
     def __str__(self):
         return f"{self.customer.user.username} - {self.room.room_name}"
 
@@ -60,9 +57,9 @@ class FoodMenu(models.Model):
     name = models.CharField(max_length=25)
     category = models.CharField(max_length=20, choices=CATEGORIES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image1 = CloudinaryField('image', folder='food_images/', null=True, blank=True)
-    image2 = CloudinaryField('image', folder='food_images/', null=True, blank=True)
-    image3 = CloudinaryField('image', folder='food_images/', null=True, blank=True)
+    image1 = models.ImageField(upload_to='images/food_images/', null=True, blank=True)
+    image2 = models.ImageField(upload_to='images/food_images/', null=True, blank=True)
+    image3 = models.ImageField(upload_to='images/food_images/', null=True, blank=True)
     description = models.TextField()
 
     def __str__(self):
@@ -74,9 +71,9 @@ class Event(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     capacity = models.IntegerField()
     description = models.TextField()
-    image1 = CloudinaryField('image', folder='event_images/', null=True, blank=True)
-    image2 = CloudinaryField('image', folder='event_images/', null=True, blank=True)
-    image3 = CloudinaryField('image', folder='event_images/', null=True, blank=True)
+    image1 = models.ImageField(upload_to='images/event_images/', null=True, blank=True)
+    image2 = models.ImageField(upload_to='images/event_images/', null=True, blank=True)
+    image3 = models.ImageField(upload_to='images/event_images/', null=True, blank=True)
 
     def __str__(self):
         return self.name
