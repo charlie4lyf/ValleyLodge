@@ -131,21 +131,16 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = 'login'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ALLOWED_HOSTS = ['valleylodge.onrender.com']
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_STORAGE_BUCKET_NAME = os.getenv('valleylodge-media-bucket')
-AWS_S3_REGION_NAME = os.getenv('us-west-2')
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_DEFAULT_ACL = None
-AWS_QUERYSTRING_AUTH = False  # Ensures images have a public URL
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',  # Cache for 1 day
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME', 'dj1qn1yqw'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY', '121319877864872'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET', 'MXwyXLJhndNsejiknkDNvw69vzw'),
 }
 
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
-
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
