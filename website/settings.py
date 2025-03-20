@@ -84,9 +84,9 @@ DATABASES = {
     }
 }
 
-#DATABASES = {
-    #'default': dj_database_url.config(default='postgresql://brian:f7O5yrhPCeTfbMAQEt1AHD6EUi5wHJEC@dpg-cvdc73dumphs73eb97g0-a/valleylodge')
-#}
+DATABASES = {
+    'default': dj_database_url.config(default='postgresql://brian:f7O5yrhPCeTfbMAQEt1AHD6EUi5wHJEC@dpg-cvdc73dumphs73eb97g0-a/valleylodge')
+}
 
 
 # Password validation
