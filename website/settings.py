@@ -78,8 +78,15 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://brian:f7O5yrhPCeTfbMAQEt1AHD6EUi5wHJEC@dpg-cvdc73dumphs73eb97g0-a/valleylodge')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+#DATABASES = {
+    #'default': dj_database_url.config(default='postgresql://brian:f7O5yrhPCeTfbMAQEt1AHD6EUi5wHJEC@dpg-cvdc73dumphs73eb97g0-a/valleylodge')
+#}
 
 
 # Password validation
@@ -125,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory for collected static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Directory for your app-specific static files
+    #os.path.join(BASE_DIR, 'static'),  # Directory for your app-specific static files
 ]
 
 LOGIN_URL = 'login'
