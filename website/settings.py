@@ -78,13 +78,6 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-DATABASES = {
     'default': dj_database_url.config(default='postgresql://brian:f7O5yrhPCeTfbMAQEt1AHD6EUi5wHJEC@dpg-cvdc73dumphs73eb97g0-a/valleylodge')
 }
 
