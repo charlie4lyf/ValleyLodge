@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://brian:f7O5yrhPCeTfbMAQEt1AHD6EUi5wHJEC@dpg-cvdc73dumphs73eb97g0-a/valleylodge')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Database file stored in your project folder
+    }
 }
+
 
 
 # Password validation
@@ -133,4 +137,3 @@ LOGIN_URL = 'login'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-ALLOWED_HOSTS = ['valleylodge.onrender.com']
